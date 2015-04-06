@@ -11,7 +11,10 @@ set sidescrolloff=5      "光标移动时保留5位
 "设置字体 
 set guifont=Monaco 
 "设置编码
-set encoding=utf-8
+"windows
+set encoding=gbk
+"linux
+"set encoding=UTF-8
 "set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 "set fileencodings=utf-8,ucs-bom,chinese
 "语言设置
@@ -20,8 +23,8 @@ set langmenu=zh_CN.UTF-8
 syntax enable
 syntax on
 "配色方案
-colorscheme evening
-colo evening
+set background=light
+colorscheme solarized
 "可以使用鼠标
 set mouse=a
 set selection=exclusive
@@ -77,7 +80,7 @@ set foldlevel=100
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
 
 "================================= 
-"vim-powerline
+"vim-airline
 "================================= 
 set laststatus=2
 let g:Powerline_symbols='unicode'
@@ -86,10 +89,12 @@ let g:Powerline_symbols='unicode'
 "vundle配置 
 "================================= 
 filetype off "bundle required
-  
-set rtp+=~/.vim/bundle/vundle/  
-call vundle#rc()  
-  
+"linux
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc() 
+"windows
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+call vundle#rc('$VIM/vimfiles/bundle/')
 " let Vundle manage Vundle     
 Bundle 'gmarik/vundle'  
   
@@ -98,6 +103,8 @@ Bundle 'gmarik/vundle'
 " original repos on github 
 "（Github网站上非vim-scripts仓库的插件，按下面格式填写）
   
+Bundle "bling/vim-airline"
+Bundle "altercation/vim-colors-solarized"
 "Bundle "Lokaltog/vim-powerline"
 "Bundle 'tpope/vim-fugitive'  
 "Bundle 'Lokaltog/vim-easymotion'  
