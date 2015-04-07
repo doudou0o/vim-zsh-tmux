@@ -51,13 +51,6 @@ set t_Sf=^[[3%dm
 endif
 "文件自动检测
 filetype on
-"设置taglist
-let Tlist_Show_One_File=0        "显示多个文件的tags
-let Tlist_File_Fold_Auto_Close=1 "非当前文件
-let Tlist_Exit_OnlyWindow=1      "当taglist是最后一个窗口时推出vim
-let Tlist_Use_SingleClick=1      "单击跳转
-let Tlist_GainFocus_On_ToggleOpen=1 "打开taglist时获得输入焦点
-let Tlist_Process_File_Always=1  "taglist 始终解析
 "设置自动补全
 filetype plugin indent on        "检测文件类型
 set completeopt=longest,menu     "关掉预览窗口
@@ -89,6 +82,7 @@ let g:Powerline_symbols='unicode'
 "vundle配置 
 "================================= 
 filetype off "bundle required
+
 "linux
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#rc() 
@@ -106,11 +100,8 @@ Bundle 'gmarik/vundle'
 Bundle "bling/vim-airline"
 Bundle "altercation/vim-colors-solarized"
 Bundle "vim-scripts/TagHighlight"
+Bundle "scrooloose/syntastic"
 "Bundle "Lokaltog/vim-powerline"
-"Bundle 'tpope/vim-fugitive'  
-"Bundle 'Lokaltog/vim-easymotion'  
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}  
-"Bundle 'tpope/vim-rails.git'  
 
 " vim-scripts repos  
 "（vim-scripts仓库里的，按下面格式填写）  
@@ -119,7 +110,7 @@ Bundle 'winmanager'
 Bundle 'ctags.vim' 
 Bundle 'taglist.vim'
 "Bundle 'SuperTab.vim'
-"Bundle 'The-NERD-tree'
+Bundle 'The-NERD-tree'
 
 " non github repos   
 "(非上面两种情况的，按下面格式填写)  
@@ -137,7 +128,8 @@ filetype plugin indent on     " required!   /** vimrc文件配置结束 **/
 "================================== 
 "WinManager配置 
 "================================== 
-let g:winManagerWindowLayout='FileExplorer|TagList'
+"let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWindowLayout='NERDTree|TagList'
 
 "映射WinManager快捷键，在normal模式下按mt，控制开启和关闭 
 nmap <silent> wm :WMToggle<cr>
@@ -145,7 +137,21 @@ nmap <silent> wm :WMToggle<cr>
 let g:winManagerWidth = 30 
 
 "在进入vim时自动打开winmanager,打开=1,关闭=0 
-let g:AutoOpenWinManager = 1 
+let g:AutoOpenWinManager = 0
+
+let g:NERDTree_title = "[NERDTree]"
+ 
+function! NERDTree_Start() 
+ 
+    exe 'NERDTree'
+ 
+endfunction 
+
+function! NERDTree_IsValid() 
+ 
+return 1 
+ 
+endfunction
 
 "================================== 
 "ctags配置 
@@ -158,11 +164,15 @@ set autochdir
 "================================== 
 "taglist配置 
 "================================== 
-
+let Tlist_File_Fold_Auto_Close=1 "非当前文件
+let Tlist_Use_SingleClick=1      "单击跳转
+let Tlist_GainFocus_On_ToggleOpen=1 "打开taglist时获得输入焦点
+let Tlist_Process_File_Always=1  "taglist 始终解析
 "不同时显示多个文件的tag，只显示当前文件的 
 let Tlist_Show_One_File=1 
 "如果taglist窗口是最后一个窗口，则退出vim 
 let Tlist_Exit_OnlyWindow=1 
+let Tlist_Show_Menu=1 "显示taglist菜单
 
 "================================== 
 " SuperTab配置 
@@ -174,3 +184,34 @@ let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="<C-X><C-O>"
 " 设置按下<Tab>后默认的补全方式, 默认是<C-P>, 
 " 现在改为<C-X><C-O>. 关于<C-P>的补全方式, 
+"================================== 
+" NERDTree
+"================================== 
+let NERDTreeShowBookmarks = 1
+let NERDTreeShowLineNumbers =1 
+let NERDTreeStatusline = 0
+let NERDChristmasTree = 1
+
+function! ToggleTree()
+    if !exists("g:openNerd")
+        NERDTree
+        let g:openNerd = 1
+    elseif g:openNerd == 1
+        let g:openNerd = 0
+        NERDTreeClose
+    elseif g:openNerd != 1
+        let g:openNerd = 1
+        NERDTree
+    endif
+endfunction
+"================================== 
+" syntastic
+"================================== 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
