@@ -105,6 +105,7 @@ Bundle 'gmarik/vundle'
   
 Bundle "bling/vim-airline"
 Bundle "altercation/vim-colors-solarized"
+Bundle "vim-scripts/TagHighlight"
 "Bundle "Lokaltog/vim-powerline"
 "Bundle 'tpope/vim-fugitive'  
 "Bundle 'Lokaltog/vim-easymotion'  
