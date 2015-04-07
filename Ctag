@@ -1,0 +1,5 @@
+linux 
+sudo apt-get install ctags
+
+windows
+http://ctags.sourceforge.net/ обть
