@@ -10,6 +10,9 @@ if has("gui_running")
     set guioptions-=b " 隐藏底部滚动条 
     set showtabline=0 " 隐藏Tab栏 
 endif
+" 定义 <Leader> 为逗号
+let mapleader = ","
+let maplocalleader = ","
 "编辑vim配置文件 
 if has('unix') 
     set fileformats=unix,dos,mac 
@@ -20,9 +23,6 @@ else
     nmap <Leader>e :tabnew $VIM/_vimrc<CR> 
     let $VIMFILES = $VIM.'/vimfiles' 
 endif
-" 定义 <Leader> 为逗号
-let mapleader = ","
-let maplocalleader = ","
 
 set nu
 set nocompatible         "取消vi兼容
@@ -138,6 +138,7 @@ Bundle "bling/vim-airline"
 Bundle "altercation/vim-colors-solarized"
 Bundle "vim-scripts/TagHighlight"
 Bundle "scrooloose/syntastic"
+Bundle "SirVer/ultisnips"
 "Bundle "Lokaltog/vim-powerline"
 
 " vim-scripts repos  
@@ -206,7 +207,7 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Show_Menu=1 "显示taglist菜单
 
 "================================== 
-" NERDTree
+" NERDTree配置
 "================================== 
 let NERDTreeShowBookmarks = 1
 let NERDTreeShowLineNumbers =1 
@@ -226,7 +227,7 @@ function! ToggleTree()
     endif
 endfunction
 "================================== 
-" syntastic
+" syntastic配置
 "================================== 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -237,3 +238,10 @@ let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let ycm_show_diagnostics_ui = 0
+
+"================================== 
+" UltiSnips配置
+"================================== 
+let g:UltiSnipsExpandTrigger="<leader><tab>" 
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
+let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
