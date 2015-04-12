@@ -1,7 +1,29 @@
 "========================================= 
 "vim配置设置 
 "========================================= 
-set go=
+"set go=r
+if has("gui_running") 
+    set guioptions+=m " 隐藏菜单栏 
+    set guioptions-=T " 隐藏工具栏 
+    set guioptions-=L " 隐藏左侧滚动条 
+    set guioptions+=r " 隐藏右侧滚动条 
+    set guioptions-=b " 隐藏底部滚动条 
+    set showtabline=0 " 隐藏Tab栏 
+endif
+"编辑vim配置文件 
+if has('unix') 
+    set fileformats=unix,dos,mac 
+    nmap <Leader>e :tabnew $HOME/.vimrc<CR> 
+    let $VIMFILES = $HOME.'/.vim' 
+else 
+    set fileformats=dos,unix,mac 
+    nmap <Leader>e :tabnew $VIM/_vimrc<CR> 
+    let $VIMFILES = $VIM.'/vimfiles' 
+endif
+" 定义 <Leader> 为逗号
+let mapleader = ","
+let maplocalleader = ","
+
 set nu
 set nocompatible         "取消vi兼容
 set cmdheight=2
@@ -9,14 +31,20 @@ set ruler                "始终显示光标位置
 set scrolloff=5          "光标移动时保留5行
 set sidescrolloff=5      "光标移动时保留5位
 "设置字体 
-set guifont=Monaco 
+"set guifont=Monaco 
+"set guifont=YaHei\ Consolas\ Hybrid\ 11.5
+" 禁止折行 
+set nowrap
 "设置编码
-"windows
-set encoding=gbk
-"linux
-"set encoding=UTF-8
-"set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-"set fileencodings=utf-8,ucs-bom,chinese
+if has('unix') 
+    set encoding=UTF-8
+    set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+    set fileencodings=utf-8,ucs-bom,chinese
+else 
+    set encoding=gbk
+    set fileencoding=chinese
+endif
+
 "语言设置
 set langmenu=zh_CN.UTF-8
 "语法高亮
@@ -25,6 +53,9 @@ syntax on
 "配色方案
 set background=light
 colorscheme solarized
+" 高亮显示当前行/列 
+set cursorline 
+"set cursorcolumn
 "可以使用鼠标
 set mouse=a
 set selection=exclusive
@@ -44,11 +75,7 @@ set smartindent         "自动缩进
 set cindent             "c语言缩进"
 set tabstop=4           "tab为四个空格"
 set expandtab           "tab用空格代替
-if &term=="xterm"
-set t_Co=8
-set t_Sb=^[[4%dm
-set t_Sf=^[[3%dm
-endif
+
 "文件自动检测
 filetype on
 "设置自动补全
@@ -65,30 +92,40 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 autocmd FileType java set omnifunc=javacomplete#Complete 
 "不要备份文件
 set nobackup
+set noswapfile
 set nowb
 "折叠
 set foldenable
 set foldmethod=syntax
 set foldlevel=100
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
+" 插入模式下使用 <BS>、<Del> <C-W> <C-U>
+set backspace=indent,eol,start
+" Buffers操作快捷方式! 
+nmap <c-l> :bnext<CR> 
+nmap <c-h> :bprevious<CR> 
 
 "================================= 
 "vim-airline
 "================================= 
 set laststatus=2
-let g:Powerline_symbols='unicode'
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
 
 "================================= 
 "vundle配置 
 "================================= 
 filetype off "bundle required
+if has('unix') 
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+else 
+    set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+    call vundle#rc('$VIM/vimfiles/bundle/')
+endif
 
-"linux
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc() 
-"windows
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-call vundle#rc('$VIM/vimfiles/bundle/')
 " let Vundle manage Vundle     
 Bundle 'gmarik/vundle'  
   
@@ -132,27 +169,21 @@ filetype plugin indent on     " required!   /** vimrc文件配置结束 **/
 let g:winManagerWindowLayout='NERDTree|TagList'
 
 "映射WinManager快捷键，在normal模式下按mt，控制开启和关闭 
-nmap <silent> wm :WMToggle<cr>
+" 键盘映射，同时加入防止因winmanager和nerdtree冲突而导致空白页的语句
+nmap wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 "设置WinManager宽度 
 let g:winManagerWidth = 30 
 
 "在进入vim时自动打开winmanager,打开=1,关闭=0 
-let g:AutoOpenWinManager = 0
+let g:AutoOpenWinManager = 1
 
 let g:NERDTree_title = "[NERDTree]"
- 
 function! NERDTree_Start() 
- 
     exe 'NERDTree'
- 
 endfunction 
-
 function! NERDTree_IsValid() 
- 
 return 1 
- 
 endfunction
-
 "================================== 
 "ctags配置 
 "================================== 
@@ -174,16 +205,6 @@ let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1 
 let Tlist_Show_Menu=1 "显示taglist菜单
 
-"================================== 
-" SuperTab配置 
-"================================== 
-let g:SuperTabRetainCompletionType=2
-" 0 - 不记录上次的补全方式
-" 1 - 记住上次的补全方式,直到用其他的补全命令改变它
-" 2 - 记住上次的补全方式,直到按ESC退出插入模式为止
-let g:SuperTabDefaultCompletionType="<C-X><C-O>"
-" 设置按下<Tab>后默认的补全方式, 默认是<C-P>, 
-" 现在改为<C-X><C-O>. 关于<C-P>的补全方式, 
 "================================== 
 " NERDTree
 "================================== 
@@ -212,6 +233,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let ycm_show_diagnostics_ui = 0
