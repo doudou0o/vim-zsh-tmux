@@ -1,0 +1,123 @@
+## Main
+# main
+snippet main
+int main(int argc, const char *argv[])
+{
+	${0}
+	return 0;
+}
+endsnippet
+# main(void)
+snippet mainn
+int main(void)
+{
+	${0}
+	return 0;
+}
+endsnippet
+
+
+## Preprocessor
+
+# std
+snippet std "std namespace"
+using namespace std;
+endsnippet
+
+# #include <...>
+snippet #inc
+#include <${1:stdio}.h>
+endsnippet
+snippet inc
+#include <${1:stdio}.h>
+endsnippet
+# #include "..."
+snippet Inc
+#include "${1}.h"
+endsnippet
+
+snippet def
+#define
+endsnippet
+
+## Control Statements
+
+#if
+snippet ifi "单行if"
+if (${1:/* condition */}) ${2};
+endsnippet
+snippet if "只if"
+if (${1:/* condition */}) {
+	${2}
+}
+endsnippet
+snippet else "只else"
+else {
+	${2}
+}
+endsnippet
+snippet ifelse "ifelse"
+if (${1:/* condition */}) {
+	${2}
+}
+else {
+	${3}
+}
+endsnippet
+snippet elseif "elseif"
+else if (${1:/* condition */}) {
+	${2}
+}
+endsnippet
+snippet switch
+switch (${1:/* variable */}) {
+	case ${2:/* variable case */}:
+		${3}
+		${4:break;}${5}
+	default:
+		${6}
+}
+endsnippet
+snippet case
+case ${1:/* variable case */}:
+	${2}
+	${3:break;}
+endsnippet
+
+## Loops
+
+snippet for
+for (${1:i} = ${2:0}; $1 < ${3:length}; $1${4:++}) {
+	${5}
+}
+endsnippet
+
+snippet while
+while (${1:/* condition */}) {
+	${2}
+}
+endsnippet
+
+## Functions
+snippet func
+${1:void} ${2:function_name}(${3})
+{
+	${4}
+}
+endsnippet
+
+
+## Input/Output
+# printf
+snippet print
+printf("${1:%s}\n"${2});
+endsnippet
+
+snippet sign
+/*
+ *Author: ChenChen
+ *Create time: `!v strftime("%Y-%m-%d %H:%M:%S")`
+ *Email: bluecc021@163.com
+ *
+ */
+endsnippet
