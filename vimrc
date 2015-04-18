@@ -13,16 +13,6 @@ endif
 " 定义 <Leader> 为逗号
 let mapleader = ","
 let maplocalleader = ","
-"编辑vim配置文件 
-if has('unix') 
-    set fileformats=unix,dos,mac 
-    nmap <Leader>e :tabnew $HOME/.vimrc<CR> 
-    let $VIMFILES = $HOME.'/.vim' 
-else 
-    set fileformats=dos,unix,mac 
-    nmap <Leader>e :tabnew $VIM/_vimrc<CR> 
-    let $VIMFILES = $VIM.'/vimfiles' 
-endif
 
 set nu
 set nocompatible         "取消vi兼容
@@ -132,6 +122,22 @@ autocmd FileType java set omnifunc=javacomplete#Complete
 set nobackup
 set noswapfile
 set nowb
+"与windows共享剪贴板
+set clipboard=unnamed
+nmap <c-a> ggVG
+nmap <c-s> :w<CR>
+" 设置Gvim的对齐线样式
+
+    let g:indentLine_char = "┊"
+    let g:indentLine_first_char = "┊"
+
+
+" 设置终端对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
+let g:indentLine_color_term = 239
+
+" 设置 GUI 对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
+" let g:indentLine_color_gui = '#A4E57E'
+
 "折叠
 set foldenable
 set foldmethod=syntax
@@ -139,9 +145,14 @@ set foldlevel=100
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
 " 插入模式下使用 <BS>、<Del> <C-W> <C-U>
 set backspace=indent,eol,start
-" Buffers操作快捷方式! 
+" Buffers操作快捷方式
 nmap <c-l> :bnext<CR> 
-nmap <c-h> :bprevious<CR> 
+nmap <c-h> :bprevious<CR>
+" 插入模式下快捷方式
+imap <c-j> <esc>ja
+imap <c-k> <esc>ka
+imap <c-h> <esc>i
+imap <c-l> <esc>la
 
 "================================= 
 "vim-airline
@@ -160,7 +171,7 @@ if has('unix')
     set rtp+=~/.vim/bundle/vundle/
     call vundle#rc()
 else 
-    set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+    set rtp+=$VIM/vimfiles/bundle/Vundle
     call vundle#rc('$VIM/vimfiles/bundle/')
 endif
 
@@ -177,7 +188,7 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "vim-scripts/TagHighlight"
 Bundle "scrooloose/syntastic"
 Bundle "SirVer/ultisnips"
-"Bundle "Lokaltog/vim-powerline"
+Bundle "Valloric/YouCompleteMe"
 
 " vim-scripts repos  
 "（vim-scripts仓库里的，按下面格式填写）  
@@ -242,7 +253,7 @@ let Tlist_Process_File_Always=1  "taglist 始终解析
 let Tlist_Show_One_File=1 
 "如果taglist窗口是最后一个窗口，则退出vim 
 let Tlist_Exit_OnlyWindow=1 
-let Tlist_Show_Menu=1 "显示taglist菜单
+let Tlist_Show_Menu=0 "显示taglist菜单
 
 "================================== 
 " NERDTree配置
@@ -250,7 +261,8 @@ let Tlist_Show_Menu=1 "显示taglist菜单
 let NERDTreeShowBookmarks = 1
 let NERDTreeShowLineNumbers =1 
 let NERDTreeStatusline = 0
-let NERDChristmasTree = 1
+"let NERDChristmasTree = 1
+let NERDTreeMinimalUI=1
 
 function! ToggleTree()
     if !exists("g:openNerd")
@@ -283,3 +295,25 @@ let ycm_show_diagnostics_ui = 0
 let g:UltiSnipsExpandTrigger="<leader><tab>" 
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+
+	"================================== 
+	" YouCompleteMe配置
+	"================================== 
+	" YCM 补全菜单配色 
+	" 菜单 
+	highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5 
+	" 选中项 
+	highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900 
+	let g:ycm_global_ycm_extra_conf = '$VIM\vimfiles\bundle\YouCompleteMe\python\.ycm_extra_conf.py'
+
+	let g:ycm_complete_in_comments=1		" 补全功能在注释中同样有效 
+	let g:ycm_confirm_extra_conf=0			" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
+	let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 标签补全引擎 
+	"tags set tags+=/data/misc/software/misc./vim/stdcpp.tags " 引入 C++ 标准库
+	inoremap <leader>; <C-x><C-o>			" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键 
+	set completeopt-=preview			" 补全内容不以分割子窗口形式出现，只显示补全列表 
+	let g:ycm_min_num_of_chars_for_completion=1	" 从第一个键入字符就开始罗列匹配项 
+	let g:ycm_cache_omnifunc=0			" 禁止缓存匹配项，每次都重新生成匹配项
+	let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全 
+
+	nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处

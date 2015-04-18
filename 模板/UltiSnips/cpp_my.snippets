@@ -43,15 +43,15 @@ endsnippet
 ## Control Statements
 
 #if
-snippet ifi "单行if"
+snippet ifi "oneline if"
 if (${1:/* condition */}) ${2};
 endsnippet
-snippet if "只if"
+snippet if "only if"
 if (${1:/* condition */}) {
 	${2}
 }
 endsnippet
-snippet else "只else"
+snippet else "only else"
 else {
 	${2}
 }
@@ -87,7 +87,7 @@ endsnippet
 ## Loops
 
 snippet for
-for (${1:i} = ${2:0}; $1 < ${3:length}; $1${4:++}) {
+for (int ${1:i} = ${2:0}; $1 < ${3:length}; $1${4:++}) {
 	${5}
 }
 endsnippet
