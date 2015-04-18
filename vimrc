@@ -43,6 +43,7 @@ syntax on
 "配色方案
 set background=light
 colorscheme solarized
+"colorscheme molokai
 " 高亮显示当前行/列 
 set cursorline 
 "set cursorcolumn
@@ -126,17 +127,6 @@ set nowb
 set clipboard=unnamed
 nmap <c-a> ggVG
 nmap <c-s> :w<CR>
-" 设置Gvim的对齐线样式
-
-    let g:indentLine_char = "┊"
-    let g:indentLine_first_char = "┊"
-
-
-" 设置终端对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
-let g:indentLine_color_term = 239
-
-" 设置 GUI 对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
-" let g:indentLine_color_gui = '#A4E57E'
 
 "折叠
 set foldenable
@@ -185,6 +175,8 @@ Bundle 'gmarik/vundle'
   
 Bundle "bling/vim-airline"
 Bundle "altercation/vim-colors-solarized"
+Bundle "tomasr/molokai"
+Bundle "Yggdroot/indentLine"
 Bundle "vim-scripts/TagHighlight"
 Bundle "scrooloose/syntastic"
 Bundle "SirVer/ultisnips"
@@ -254,6 +246,23 @@ let Tlist_Show_One_File=1
 "如果taglist窗口是最后一个窗口，则退出vim 
 let Tlist_Exit_OnlyWindow=1 
 let Tlist_Show_Menu=0 "显示taglist菜单
+
+"================================== 
+" indentLine配置
+"================================== 
+" 设置Gvim的对齐线样式
+
+"    let g:indentLine_char = "┊"
+"    let g:indentLine_first_char = "┊"
+let g:indentLine_char = "|"
+let g:indentLine_first_char = "|"
+
+" 设置终端对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
+" let g:indentLine_color_term = 239
+
+" 设置 GUI 对齐线颜色，如果不喜欢可以将其注释掉采用默认颜色
+let g:indentLine_color_gui = '#A4E57E'
+let g:indentLine_color_tty_light = 7
 
 "================================== 
 " NERDTree配置
