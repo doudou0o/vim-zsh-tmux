@@ -26,14 +26,14 @@ endsnippet
 
 # #include <...>
 snippet #inc
-#include <${1:stdio}.h>
+#include <${1:stdio.h}>
 endsnippet
 snippet inc
-#include <${1:stdio}.h>
+#include <${1:stdio.h}>
 endsnippet
 # #include "..."
 snippet Inc
-#include "${1}.h"
+#include "${1}"
 endsnippet
 
 snippet def
@@ -44,10 +44,10 @@ endsnippet
 
 #if
 snippet ifi "oneline if"
-if (${1:/* condition */}) ${2};
+if ( ${1:/* condition */} ) ${2};
 endsnippet
 snippet if "only if"
-if (${1:/* condition */}) {
+if ( ${1:/* condition */} ) {
 	${2}
 }
 endsnippet
@@ -57,7 +57,7 @@ else {
 }
 endsnippet
 snippet ifelse "ifelse"
-if (${1:/* condition */}) {
+if ( ${1:/* condition */} ) {
 	${2}
 }
 else {
@@ -65,12 +65,12 @@ else {
 }
 endsnippet
 snippet elseif "elseif"
-else if (${1:/* condition */}) {
+else if ( ${1:/* condition */} ) {
 	${2}
 }
 endsnippet
 snippet switch
-switch (${1:/* variable */}) {
+switch ( ${1:/* variable */} ) {
 	case ${2:/* variable case */}:
 		${3}
 		${4:break;}${5}
