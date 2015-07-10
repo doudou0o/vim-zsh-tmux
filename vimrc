@@ -237,7 +237,7 @@ set autochdir
 "================================== 
 "taglist配置 
 "================================== 
-let Tlist_File_Fold_Auto_Close=1 "非当前文件
+let Tlist_File_Fold_Auto_Close=0 "非当前文件
 let Tlist_Use_SingleClick=1      "单击跳转
 let Tlist_GainFocus_On_ToggleOpen=1 "打开taglist时获得输入焦点
 let Tlist_Process_File_Always=1  "taglist 始终解析
