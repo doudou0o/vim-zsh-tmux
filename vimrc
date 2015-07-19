@@ -304,6 +304,7 @@ let ycm_show_diagnostics_ui = 0
 let g:UltiSnipsExpandTrigger="<leader><tab>" 
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+"let g:UltiSnipsSnippetDirectories=["mysnippets"]
 
 	"================================== 
 	" YouCompleteMe配置
