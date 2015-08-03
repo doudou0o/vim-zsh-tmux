@@ -47,6 +47,7 @@ colorscheme solarized
 " 高亮显示当前行/列 
 set cursorline 
 "set cursorcolumn
+hi CursorLine  cterm=NONE  ctermbg=black  ctermfg=NONE
 "可以使用鼠标
 set mouse=a
 set selection=exclusive
@@ -60,11 +61,11 @@ set showmatch
 "括号自动补全
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap { {<CR>}<Esc>O
+inoremap { {}<Esc>i
 autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=CloseBracket()<CR>
+inoremap } <c-r>=ClosePair('}')<CR>
 inoremap " <c-r>=QuoteDelim('"')<CR>
 inoremap ' <c-r>=QuoteDelim("'")<CR>
 function ClosePair(char)
@@ -72,13 +73,6 @@ function ClosePair(char)
  return "\<Right>"
  else
  return a:char
- endif
-endf
-function CloseBracket()
- if match(getline(line('.') + 1), '\s*}') < 0
- return "\<CR>}"
- else
- return "\<Esc>j0f}a"
  endif
 endf
 function QuoteDelim(char)
@@ -131,6 +125,7 @@ nmap <c-s> :w<CR>
 "折叠
 set foldenable
 set foldmethod=syntax
+"set foldmethod=indent
 set foldlevel=100
 "nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
 " 插入模式下使用 <BS>、<Del> <C-W> <C-U>
@@ -143,12 +138,14 @@ imap <c-j> <esc>ja
 imap <c-k> <esc>ka
 imap <c-h> <esc>i
 imap <c-l> <esc>la
+imap jk <esc>
 
 "================================= 
 "vim-airline
 "================================= 
 set laststatus=2
 let g:airline_theme='base16'
+"let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' '
