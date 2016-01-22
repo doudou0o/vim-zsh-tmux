@@ -1,16 +1,24 @@
-YCM °²×°
+YCM å®‰è£…
 
-windows ÏÂ
-vim °æ±¾ÎŞËùÎ½µÄ£¬ÏÂÒ»¸ö×î¸ßµÄ£¬ÔÚvim for windowsÏÂ
+windows ä¸‹
+vim ç‰ˆæœ¬æ— æ‰€è°“çš„ï¼Œä¸‹ä¸€ä¸ªæœ€é«˜çš„ï¼Œåœ¨vim for windowsä¸‹
 https://bitbucket.org/Haroogan/vim-for-windows
 
 
-È»ºóÏÂÒ»¸öYCM for windows ÒÔ¼° LLVM
+ç„¶åä¸‹ä¸€ä¸ªYCM for windows ä»¥åŠ LLVM
 https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows
-Õâ¸öÏÂµÚ¶ş¸ö°æ±¾µÄ£¬²»Òª×îĞÂµÄ£¬×îĞÂµÄÃ»ÓĞÒ»Ğ©¹Ø¼üÎÄ¼ş
-È»ºó²»ÒªÈÃ Vundle È¥install ×Ô¼ºÖ±½Ó¸´ÖÆ½øÈ¥
+è¿™ä¸ªä¸‹ç¬¬äºŒä¸ªç‰ˆæœ¬çš„ï¼Œä¸è¦æœ€æ–°çš„ï¼Œæœ€æ–°çš„æ²¡æœ‰ä¸€äº›å…³é”®æ–‡ä»¶
+ç„¶åä¸è¦è®© Vundle å»install è‡ªå·±ç›´æ¥å¤åˆ¶è¿›å»
 
-½«clang.lib·Åµ½YCM/python/ ÏÂ
-¾Í¿ÉÒÔÁË
+å°†clang.libæ”¾åˆ°YCM/python/ ä¸‹
+å°±å¯ä»¥äº†
 
-YCMdebug¿´°²×°Íê³ÉÓë·ñ
+YCMdebugçœ‹å®‰è£…å®Œæˆä¸å¦
+
+linux ä¸‹
+https://github.com/Valloric/YouCompleteMe
+cloneä¸‹æ¥ ä¹Ÿå¯ä»¥BundleUpdate
+ç„¶å
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
+å°±å¯ä»¥äº†
