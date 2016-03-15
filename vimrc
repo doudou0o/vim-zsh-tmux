@@ -178,6 +178,8 @@ Bundle "vim-scripts/TagHighlight"
 Bundle "scrooloose/syntastic"
 Bundle "SirVer/ultisnips"
 Bundle "Valloric/YouCompleteMe"
+"变量高亮
+"Bundle "jaxbot/semantic-highlight.vim"
 
 " vim-scripts repos  
 "（vim-scripts仓库里的，按下面格式填写）  
@@ -221,7 +223,7 @@ function! NERDTree_Start()
     exe 'NERDTree'
 endfunction 
 function! NERDTree_IsValid() 
-return 1 
+    return 1 
 endfunction
 "================================== 
 "ctags配置 
@@ -308,9 +310,9 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 	"================================== 
 	" YCM 补全菜单配色 
 	" 菜单 
-	highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5 
+	" highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5 
 	" 选中项 
-	highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900 
+	" highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900 
 	let g:ycm_global_ycm_extra_conf = '$VIM\vimfiles\bundle\YouCompleteMe\python\.ycm_extra_conf.py'
 
 	let g:ycm_complete_in_comments=1		" 补全功能在注释中同样有效 
