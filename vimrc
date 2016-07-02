@@ -31,7 +31,7 @@ if has('unix')
     set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
     set fileencodings=utf-8,ucs-bom,chinese
 else 
-    set encoding=gbk
+    set encoding=utf-8
     set fileencoding=chinese
 endif
 
@@ -124,10 +124,10 @@ nmap <c-s> :w<CR>
 
 "折叠
 set foldenable
-set foldmethod=syntax
-"set foldmethod=indent
+"set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=100
-"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo') <CR>
 " 插入模式下使用 <BS>、<Del> <C-W> <C-U>
 set backspace=indent,eol,start
 " Buffers操作快捷方式
@@ -158,8 +158,8 @@ if has('unix')
     set rtp+=~/.vim/bundle/vundle.vim/
     call vundle#rc()
 else 
-    set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-    call vundle#begin('$VIM/vimfiles/bundle/')
+    set rtp+=$VIM/vimfiles/bundle/Vundle
+    call vundle#rc('$VIM/vimfiles/bundle/')
 endif
 
 " let Vundle manage Vundle     
@@ -189,6 +189,7 @@ Bundle 'ctags.vim'
 Bundle 'taglist.vim'
 "Bundle 'SuperTab.vim'
 Bundle 'The-NERD-tree'
+Bundle 'pyflakes.vim'
 
 " non github repos   
 "(非上面两种情况的，按下面格式填写)  
