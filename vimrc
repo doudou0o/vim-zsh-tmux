@@ -155,11 +155,11 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 "================================= 
 filetype off "bundle required
 if has('unix') 
-    set rtp+=~/.vim/bundle/vundle/
+    set rtp+=~/.vim/bundle/vundle.vim/
     call vundle#rc()
 else 
-    set rtp+=$VIM/vimfiles/bundle/Vundle
-    call vundle#rc('$VIM/vimfiles/bundle/')
+    set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+    call vundle#begin('$VIM/vimfiles/bundle/')
 endif
 
 " let Vundle manage Vundle     
@@ -303,7 +303,7 @@ let ycm_show_diagnostics_ui = 0
 let g:UltiSnipsExpandTrigger="<leader><tab>" 
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-"let g:UltiSnipsSnippetDirectories=["mysnippets"]
+"let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 	"================================== 
 	" YouCompleteMe配置
@@ -313,7 +313,7 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 	" highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5 
 	" 选中项 
 	" highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900 
-	let g:ycm_global_ycm_extra_conf = '$VIM\vimfiles\bundle\YouCompleteMe\python\.ycm_extra_conf.py'
+	" let g:ycm_global_ycm_extra_conf = '$VIM/vimfiles/bundle/YouCompleteMe/python/.ycm_extra_conf.py'
 
 	let g:ycm_complete_in_comments=1		" 补全功能在注释中同样有效 
 	let g:ycm_confirm_extra_conf=0			" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
