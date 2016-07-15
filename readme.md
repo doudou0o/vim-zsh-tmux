@@ -1,11 +1,11 @@
 ## 设置vim
 
+## 编译 vim
+./configure --prefix=/home/opt/vim/ --with-features=huge --enable-multibyte --enable-pythoninterp
 ### Vundle 安装
 
 linux
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-./configure --prefix=/home/opt/vim/ --with-features=huge --enable-multibyte --enable-pythoninterp
 
 windows
 git clone https://github.com/gmarik/Vundle.vim.git %USERPROFILE%/vimfiles/bundle/Vundle.vim
