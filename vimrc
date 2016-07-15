@@ -155,7 +155,7 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 "================================= 
 filetype off "bundle required
 if has('unix') 
-    set rtp+=~/.vim/bundle/vundle.vim/
+    set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#rc()
 else 
     set rtp+=$VIM/vimfiles/bundle/Vundle
