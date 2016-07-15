@@ -4,6 +4,7 @@
 
 linux
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
 ./configure --prefix=/home/opt/vim/ --with-features=huge --enable-multibyte --enable-pythoninterp
 
 windows
@@ -79,5 +80,6 @@ vim74/syntax/
 
 ## 设置 tmux
 ./configure --prefix=/home/opt/tmux  [--enable-static] CFLAGS=-I/opt/userhome/icchenchen/opt/libevent/include LDFLAGS=-L/opt/userhome/icchenchen/opt/libevent/lib
+
 
 ## 设置 zsh
