@@ -1,34 +1,35 @@
-## ÉèÖÃvim
+## è®¾ç½®vim
 
-### Vundle °²×°
+### Vundle å®‰è£…
 
 linux
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+./configure --prefix=/home/opt/vim/ --with-features=huge --enable-multibyte --enable-pythoninterp
 
 windows
 git clone https://github.com/gmarik/Vundle.vim.git %USERPROFILE%/vimfiles/bundle/Vundle.vim
 
-È»ºó½øÈë vim Ö´ĞĞBundleInstall ¾Í¿ÉÒÔÁËËùÓĞÆäËû²å¼ş¶¼»á°²×°ºÃ
+ç„¶åè¿›å…¥ vim æ‰§è¡ŒBundleInstall å°±å¯ä»¥äº†æ‰€æœ‰å…¶ä»–æ’ä»¶éƒ½ä¼šå®‰è£…å¥½
 
-### ÅäÉ«°²×°
+### é…è‰²å®‰è£…
 
-½« BundleÖĞµÄ 
+å°† Bundleä¸­çš„ 
 /vim-colors-solarized/colors/solarized.vim
 /molokai/colors/molokai.vim
-¸´ÖÆµ½
-~/.vim/colors/ ÎÄ¼ş¼ĞÖĞ
+å¤åˆ¶åˆ°
+~/.vim/colors/ æ–‡ä»¶å¤¹ä¸­
 
-(¸½¼Ó)
-ÎÒµÄÏµÍ³ÔÚlinuxÖĞsolarizedÆÕÍ¨ÑÕÉ«Ò²ÊÇÀ¶É«ºÍÒ»Ğ©¹Ø¼ü×ÖÎŞ·¨Çø·Ö£¬ËùÒÔÔÚsolarized.vimÎÄ¼şÖĞĞŞ¸ÄÁËÒ»ĞĞ
-µÚ189ĞĞ
+(é™„åŠ )
+æˆ‘çš„ç³»ç»Ÿåœ¨linuxä¸­solarizedæ™®é€šé¢œè‰²ä¹Ÿæ˜¯è“è‰²å’Œä¸€äº›å…³é”®å­—æ— æ³•åŒºåˆ†ï¼Œæ‰€ä»¥åœ¨solarized.vimæ–‡ä»¶ä¸­ä¿®æ”¹äº†ä¸€è¡Œ
+ç¬¬189è¡Œ
 let s:base0       = "10"
-base0ÊÇÖ¸ÆÕÍ¨ÎÄ±¾£¬10ÊÇÄ³¸öÑÕÉ«Ìæ´ú
+base0æ˜¯æŒ‡æ™®é€šæ–‡æœ¬ï¼Œ10æ˜¯æŸä¸ªé¢œè‰²æ›¿ä»£
 
-### Ä£°åÎÄ¼ş
+### æ¨¡æ¿æ–‡ä»¶
 
-https://github.com/honza/vim-snippets  ÕâÀïÏÂÔØÄ£°å»òÕß×Ô¼ºĞ´Ä£°å(¿´Ä£°åÎÄ¼ş¾ÍÁË½âÈçºÎĞ´ÁË)
+https://github.com/honza/vim-snippets  è¿™é‡Œä¸‹è½½æ¨¡æ¿æˆ–è€…è‡ªå·±å†™æ¨¡æ¿(çœ‹æ¨¡æ¿æ–‡ä»¶å°±äº†è§£å¦‚ä½•å†™äº†)
 
-°ÑËùÓĞÄ£°å·Åµ½
+æŠŠæ‰€æœ‰æ¨¡æ¿æ”¾åˆ°
 linux
 ~/.vim/snippets/
 ~/.vim/UltiSnips/
@@ -37,40 +38,46 @@ windows
 vim74/snippets/ 
 vim74/UltiSnips/
 
-### YCM °²×°
+### YCM å®‰è£…
 
-windows ÏÂ
-vim °æ±¾ÎŞËùÎ½µÄ£¬ÏÂÒ»¸ö×î¸ßµÄ£¬ÔÚvim for windowsÏÂ
+windows ä¸‹
+vim ç‰ˆæœ¬æ— æ‰€è°“çš„ï¼Œä¸‹ä¸€ä¸ªæœ€é«˜çš„ï¼Œåœ¨vim for windowsä¸‹
 https://bitbucket.org/Haroogan/vim-for-windows
 
-È»ºóÏÂÒ»¸öYCM for windows ÒÔ¼° LLVM
+ç„¶åä¸‹ä¸€ä¸ªYCM for windows ä»¥åŠ LLVM
 https://bitbucket.org/Haroogan/vim-youcompleteme-for-windows
-Õâ¸öÏÂµÚ¶ş¸ö°æ±¾µÄ£¬²»Òª×îĞÂµÄ£¬×îĞÂµÄÃ»ÓĞÒ»Ğ©¹Ø¼üÎÄ¼ş
-È»ºó²»ÒªÈÃ Vundle È¥install ×Ô¼ºÖ±½Ó¸´ÖÆ½øÈ¥
+è¿™ä¸ªä¸‹ç¬¬äºŒä¸ªç‰ˆæœ¬çš„ï¼Œä¸è¦æœ€æ–°çš„ï¼Œæœ€æ–°çš„æ²¡æœ‰ä¸€äº›å…³é”®æ–‡ä»¶
+ç„¶åä¸è¦è®© Vundle å»install è‡ªå·±ç›´æ¥å¤åˆ¶è¿›å»
 
-½«clang.lib·Åµ½YCM/python/ ÏÂ
-¾Í¿ÉÒÔÁË\#finish
+å°†clang.libæ”¾åˆ°YCM/python/ ä¸‹
+å°±å¯ä»¥äº†\#finish
 
 
-linux ÏÂ
+linux ä¸‹
 https://github.com/Valloric/YouCompleteMe
-cloneÏÂÀ´ Ò²¿ÉÒÔBundleUpdate
-È»ºó
+cloneä¸‹æ¥ ä¹Ÿå¯ä»¥BundleUpdate
+ç„¶å
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
-¾Í¿ÉÒÔÁË\#finish
+å°±å¯ä»¥äº†\#finish
 
-(Èç¹ûÎÄ¼ş²»´æÔÚ¿ÉÒÔÖ±½Ó¸´ÖÆÒ»¸ö)
+(å¦‚æœæ–‡ä»¶ä¸å­˜åœ¨å¯ä»¥ç›´æ¥å¤åˆ¶ä¸€ä¸ª)
 
-### Ctag °²×°
+### Ctag å®‰è£…
 linux 
 sudo apt-get install ctags
-Ò²¿ÉÒÔÏÂÔØÔ´Âë±àÒë°²×°£¬Ò²Ê®·Ö·½±ã
+ä¹Ÿå¯ä»¥ä¸‹è½½æºç ç¼–è¯‘å®‰è£…ï¼Œä¹Ÿååˆ†æ–¹ä¾¿
 
 windows
-http://ctags.sourceforge.net/ ÏÂÔØ
+http://ctags.sourceforge.net/ ä¸‹è½½
 
-### ¸ßÁÁÎÄ¼ş
+### é«˜äº®æ–‡ä»¶
 
 vim74/syntax/
 ~/.vim/syntax
+
+
+## è®¾ç½® tmux
+./configure --prefix=/home/opt/tmux  [--enable-static] CFLAGS=-I/opt/userhome/icchenchen/opt/libevent/include LDFLAGS=-L/opt/userhome/icchenchen/opt/libevent/lib
+
+## è®¾ç½® zsh
