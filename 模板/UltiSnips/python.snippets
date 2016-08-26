@@ -19,6 +19,12 @@ for ${1:item} in ${2:iterable}:
 	${3:${VISUAL:pass}}
 endsnippet
 
+snippet open "open file" b
+with open(${1:filename}) as fp:
+    for line in fp:
+        line = line.strip().decode("utf8")
+endsnippet
+
 ##########
 # COMMON #
 ##########

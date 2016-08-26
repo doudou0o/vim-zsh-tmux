@@ -49,7 +49,7 @@ set cursorline
 "set cursorcolumn
 hi CursorLine  cterm=NONE  ctermbg=black  ctermfg=NONE
 "可以使用鼠标
-set mouse=a
+set mouse=c
 set selection=exclusive
 set selectmode=mouse,key
 "实时匹配搜索文本 
@@ -133,6 +133,9 @@ set backspace=indent,eol,start
 " Buffers操作快捷方式
 nmap <c-l> :bnext<CR> 
 nmap <c-h> :bprevious<CR>
+
+nmap <s-j> <c-d>
+nmap <s-k> <c-u>
 " 插入模式下快捷方式
 imap <c-j> <esc>ja
 imap <c-k> <esc>ka
@@ -304,6 +307,7 @@ let ycm_show_diagnostics_ui = 0
 let g:UltiSnipsExpandTrigger="<leader><tab>" 
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+"let g:UltiSnipsSnippetDirectories=["mysnippets"] 
 "let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 	"================================== 
@@ -327,3 +331,5 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 	let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全 
 
 	nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
+	
+	nnoremap <Leader>s :SemanticHighlightToggle<cr>

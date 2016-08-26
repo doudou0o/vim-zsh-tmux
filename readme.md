@@ -5,7 +5,7 @@
 
 在.bashrc中增加 (若你安装了zsh 统一改为 .zshrc)
 ~~~
-alias vim='/opt/userhome/icchenchen/opt/vim/bin/vim'
+alias vim='$HOME/opt/vim/bin/vim'
 ~~~
 
 ### Vundle 安装
@@ -104,13 +104,26 @@ vim74/syntax/
 
 且在.bashrc中增加(若你安装了zsh 统一改为 .zshrc)  
 ~~~
-LIBEVENT_PATH=$HOME/opt/libevent  
+LIBEVENT_PATH="$HOME/opt/libevent"  
 export LD_LIBRARY_PATH="$LIBEVENT_PATH/lib/:$LD_LIBRARY_PATH"
 ~~~
 
 再安装tmux
 ~~~
-./configure --prefix=$HOME/opt/tmux  [--enable-static] CFLAGS=-I$HOME/opt/libevent/include LDFLAGS=-L$HOME/opt/libevent/lib
+./configure --prefix=$HOME/opt/tmux  CFLAGS="-I$HOME/opt/libevent/include" LDFLAGS="-L$HOME/opt/libevent/lib"
+~~~
+
+如果发生  "curses not found" 错误则需要再安装 ncurses  
+~~~
+wget http://ftp.gnu.org/pub/gnu/ncurses/ncurses-5.9.tar.gz  
+./configure --prefix=$HOME/opt/ncurses --with-shared --without-debug --enable-widec  
+~~~
+
+并且将tmux 的配置改成
+~~~
+./configure --prefix=$HOME/opt/tmux  
+CFLAGS="-I$HOME/opt/libevent/include -I$HOME/opt/ncurses/include/ncurses -I$HOME/opt/ncurses/include"  
+LDFLAGS="-L$HOME/opt/libevent/lib -L$HOME/opt/ncurses/lib"  
 ~~~
 
 ## 使用
@@ -132,6 +145,15 @@ alias tmux='$HOME/opt/tmux/bin/tmux'
 wget http://sourceforge.net/projects/zsh/files/zsh/5.0.7/zsh-5.0.7.tar.gz
 ./configure --prefix=$HOME/opt/zsh
 make & make install
+~~~
+
+如果发生  "curses not found" 错误则需要再安装 ncurses  
+详情请按照上一章
+并且配置改为
+~~~
+./configure --prefix=$HOME/opt/zsh  
+CFLAGS="-I$HOME/opt/ncurses/include/ncurses -I$HOME/opt/ncurses/include"  
+LDFLAGS="-L$HOME/opt/ncurses/lib"
 ~~~
 
 ### 安装 oh-my-zsh
