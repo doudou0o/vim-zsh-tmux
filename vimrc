@@ -161,7 +161,7 @@ if has('unix')
     set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#rc()
 else 
-    set rtp+=$VIM/vimfiles/bundle/Vundle
+    set rtp+=$VIM/vimfiles/bundle/Vundle.vim
     call vundle#rc('$VIM/vimfiles/bundle/')
 endif
 
