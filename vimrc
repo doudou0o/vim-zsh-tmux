@@ -40,6 +40,9 @@ set langmenu=zh_CN.UTF-8
 "语法高亮
 syntax enable
 syntax on
+syntax sync minlines=128
+syntax sync maxlines=256
+set synmaxcol=800
 "配色方案
 set background=light
 colorscheme solarized
