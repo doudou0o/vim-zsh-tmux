@@ -1,13 +1,11 @@
 
+plugins=(git wd)
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-#if [ -e /usr/share/terminfo/x/xterm-256color ]; then                                                      
-#    export TERM='xterm-256color'
-#else
-#    export TERM-'xterm-color'
-#fi
+export TERM='xterm-256color'
+
 #ZSH_THEME="gentoo"
 ZSH_THEME="mythemeNormal"
 #ZSH_THEME="mytheme2Line"
@@ -40,7 +38,7 @@ setopt COMPLETE_IN_WORD
 alias cls='clear'
 alias ll='ls -l'
 alias la='ls -a'
-alias vi='$HOME/vim/bin/vim'
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias vim='vi'
 alias javac="javac -J-Dfile.encoding=utf8"
 alias grep="grep --color=auto"
@@ -56,12 +54,11 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 
-alias gearadmin='/opt/app/gearmand/bin/gearadmin'
 
 # Tmux
-LIBEVENT_PATH=/data/chenchen/opt/libevent2
-export LD_LIBRARY_PATH="$LIBEVENT_PATH/lib/:$LD_LIBRARY_PATH"
-alias tmux='/data/chenchen/opt/tmux2.1/bin/tmux'
+#LIBEVENT_PATH=/data/chenchen/opt/libevent2
+#export LD_LIBRARY_PATH="$LIBEVENT_PATH/lib/:$LD_LIBRARY_PATH"
+#alias tmux='/data/chenchen/opt/tmux2.1/bin/tmux'
 
 # 禁止锁屏
 stty -ixon
