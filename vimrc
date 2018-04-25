@@ -1,15 +1,7 @@
 "========================================= 
 "vim配置设置 
 "========================================= 
-"set go=r
-if has("gui_running") 
-    set guioptions+=m " 隐藏菜单栏 
-    set guioptions-=T " 隐藏工具栏 
-    set guioptions-=L " 隐藏左侧滚动条 
-    set guioptions+=r " 隐藏右侧滚动条 
-    set guioptions-=b " 隐藏底部滚动条 
-    set showtabline=0 " 隐藏Tab栏 
-endif
+
 " 定义 <Leader> 为逗号
 let mapleader = ","
 let maplocalleader = ","
@@ -21,19 +13,14 @@ set ruler                "始终显示光标位置
 set scrolloff=5          "光标移动时保留5行
 set sidescrolloff=5      "光标移动时保留5位
 "设置字体 
-"set guifont=Monaco 
+set guifont=Monaco:h16
 "set guifont=YaHei\ Consolas\ Hybrid\ 11.5
 " 禁止折行 
 set nowrap
 "设置编码
-if has('unix') 
-    set encoding=UTF-8
-    set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-    set fileencodings=utf-8,ucs-bom,chinese
-else 
-    set encoding=utf-8
-    set fileencoding=chinese
-endif
+set encoding=UTF-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set fileencodings=utf-8,ucs-bom,chinese
 
 "语言设置
 set langmenu=zh_CN.UTF-8
@@ -43,10 +30,16 @@ syntax on
 syntax sync minlines=128
 syntax sync maxlines=256
 set synmaxcol=800
+
 "配色方案
-set background=light
-colorscheme solarized
+set t_Co=256
+set background=dark
+let g:neosolarized_visibility="high"
+let g:neosolarized_contrast = "high"
+set termguicolors
+colorscheme NeoSolarized
 "colorscheme molokai
+
 " 高亮显示当前行/列 
 set cursorline 
 "set cursorcolumn
@@ -137,6 +130,9 @@ set backspace=indent,eol,start
 nmap <c-l> :bnext<CR> 
 nmap <c-h> :bprevious<CR>
 
+" 黏贴缩进关闭
+set pastetoggle=<F10>
+
 nmap <s-j> <c-d>
 nmap <s-k> <c-u>
 " 插入模式下快捷方式
@@ -159,14 +155,9 @@ let g:airline#extensions#tabline#left_alt_sep = ' '
 "================================= 
 "vundle配置 
 "================================= 
-filetype off "bundle required
-if has('unix') 
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#rc()
-else 
-    set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-    call vundle#rc('$VIM/vimfiles/bundle/')
-endif
+
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
 
 " let Vundle manage Vundle     
 Bundle 'gmarik/vundle'  
@@ -181,11 +172,12 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "tomasr/molokai"
 Bundle "Yggdroot/indentLine"
 Bundle "vim-scripts/TagHighlight"
-Bundle "scrooloose/syntastic"
+"Bundle "scrooloose/syntastic"
 Bundle "SirVer/ultisnips"
 Bundle "Valloric/YouCompleteMe"
-"变量高亮
+"变量高亮(太花了)
 "Bundle "jaxbot/semantic-highlight.vim"
+Bundle "vim-python/python-syntax"
 
 " vim-scripts repos  
 "（vim-scripts仓库里的，按下面格式填写）  
@@ -195,7 +187,7 @@ Bundle 'ctags.vim'
 Bundle 'taglist.vim'
 "Bundle 'SuperTab.vim'
 Bundle 'The-NERD-tree'
-Bundle 'pyflakes.vim'
+"Bundle 'pyflakes.vim'
 
 " non github repos   
 "(非上面两种情况的，按下面格式填写)  
@@ -241,6 +233,13 @@ set tags=tags;
 set autochdir 
 
 "================================== 
+"python-syntax配置 
+"================================== 
+let g:python_version_2 = 1
+let g:python_highlight_all = 1
+let g:python_highlight_builtins = 1
+
+"================================== 
 "taglist配置 
 "================================== 
 let Tlist_File_Fold_Auto_Close=0 "非当前文件
@@ -252,6 +251,7 @@ let Tlist_Show_One_File=1
 "如果taglist窗口是最后一个窗口，则退出vim 
 let Tlist_Exit_OnlyWindow=1 
 let Tlist_Show_Menu=0 "显示taglist菜单
+
 
 "================================== 
 " indentLine配置
@@ -310,29 +310,29 @@ let ycm_show_diagnostics_ui = 0
 let g:UltiSnipsExpandTrigger="<leader><tab>" 
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-"let g:UltiSnipsSnippetDirectories=["mysnippets"] 
-"let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["mysnippets"] 
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
-	"================================== 
-	" YouCompleteMe配置
-	"================================== 
-	" YCM 补全菜单配色 
-	" 菜单 
-	" highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5 
-	" 选中项 
-	" highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900 
-	" let g:ycm_global_ycm_extra_conf = '$VIM/vimfiles/bundle/YouCompleteMe/python/.ycm_extra_conf.py'
+"================================== 
+" YouCompleteMe配置
+"================================== 
+" YCM 补全菜单配色 
+" 菜单 
+" highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5 
+" 选中项 
+" highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900 
+" let g:ycm_global_ycm_extra_conf = '$VIM/vimfiles/bundle/YouCompleteMe/python/.ycm_extra_conf.py'
 
-	let g:ycm_complete_in_comments=1		" 补全功能在注释中同样有效 
-	let g:ycm_confirm_extra_conf=0			" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
-	let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 标签补全引擎 
-	"tags set tags+=/data/misc/software/misc./vim/stdcpp.tags " 引入 C++ 标准库
-	inoremap <leader>; <C-x><C-o>			" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键 
-	set completeopt-=preview			" 补全内容不以分割子窗口形式出现，只显示补全列表 
-	let g:ycm_min_num_of_chars_for_completion=1	" 从第一个键入字符就开始罗列匹配项 
-	let g:ycm_cache_omnifunc=0			" 禁止缓存匹配项，每次都重新生成匹配项
-	let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全 
+let g:ycm_complete_in_comments=1		" 补全功能在注释中同样有效 
+let g:ycm_confirm_extra_conf=0			" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示 
+let g:ycm_collect_identifiers_from_tags_files=1 " 开启 YCM 标签补全引擎 
+"tags set tags+=/data/misc/software/misc./vim/stdcpp.tags " 引入 C++ 标准库
+inoremap <leader>; <C-x><C-o>			" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键 
+set completeopt-=preview			" 补全内容不以分割子窗口形式出现，只显示补全列表 
+let g:ycm_min_num_of_chars_for_completion=1	" 从第一个键入字符就开始罗列匹配项 
+let g:ycm_cache_omnifunc=0			" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全 
 
-	nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
-	
-	nnoremap <Leader>s :SemanticHighlightToggle<cr>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
+
+nnoremap <Leader>s :SemanticHighlightToggle<cr>

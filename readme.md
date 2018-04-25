@@ -22,7 +22,7 @@ git clone https://github.com/gmarik/Vundle.vim.git %USERPROFILE%/vimfiles/bundle
 ### 配色安装
 
 将 Bundle中的  
-/vim-colors-solarized/colors/solarized.vim  
+/vim-colors-solarized/colors/solarized.vim (已经改为NeoSolarized因为该主题能够无视iterm2的主题) 
 /molokai/colors/molokai.vim  
 复制到  
 ~/.vim/colors/ 文件夹中  
@@ -168,3 +168,10 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ### 设置zsh 默认
 没有root权限时: 在 .bashrc 中曾加 exec $HOME/opt/zsh/bin/zsh -l  
 有root权限时:   chsh -s /usr/local/bin/zsh
+
+
+## 设置iterm2
+下载一个[字体](https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf)
+当使用zsh的`ZSH_THEME="agnoster"`主题时需要
+
+
