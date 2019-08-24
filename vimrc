@@ -1,6 +1,5 @@
-"========================================= 
-"vim配置设置 
-"========================================= 
+"=========================================
+"vim配置设置 "=========================================
 
 " 定义 <Leader> 为逗号
 let mapleader = ","
@@ -12,7 +11,7 @@ set cmdheight=2
 set ruler                "始终显示光标位置
 set scrolloff=5          "光标移动时保留5行
 set sidescrolloff=5      "光标移动时保留5位
-"设置字体 
+"设置字体
 set guifont=Monaco:h16
 "set guifont=YaHei\ Consolas\ Hybrid\ 11.5
 " 禁止折行 
@@ -26,8 +25,7 @@ set fileencodings=utf-8,ucs-bom,chinese
 set langmenu=zh_CN.UTF-8
 "语法高亮
 syntax enable
-syntax on
-syntax sync minlines=128
+syntax on syntax sync minlines=128
 syntax sync maxlines=256
 set synmaxcol=800
 
@@ -38,7 +36,10 @@ let g:neosolarized_visibility="high"
 let g:neosolarized_contrast = "high"
 set termguicolors
 colorscheme NeoSolarized
+"colorscheme solarized
 "colorscheme molokai
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
 
 " 高亮显示当前行/列 
 set cursorline 
@@ -172,7 +173,7 @@ Bundle "altercation/vim-colors-solarized"
 Bundle "tomasr/molokai"
 Bundle "Yggdroot/indentLine"
 Bundle "vim-scripts/TagHighlight"
-"Bundle "scrooloose/syntastic"
+Bundle "scrooloose/syntastic"
 Bundle "SirVer/ultisnips"
 Bundle "Valloric/YouCompleteMe"
 "变量高亮(太花了)
@@ -301,8 +302,18 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let ycm_show_diagnostics_ui = 0
+let g:syntastic_check_on_wq = 0 "实时检查,若卡顿关闭置位1
+let ycm_show_diagnostics_ui = 1
+"let g:syntastic_quiet_messages = { "type": "style" }
+"let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['pyflakes']
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='►'
+nmap sn :lnext<CR>
+nmap sp :lprev<CR>
+
+
 
 "================================== 
 " UltiSnips配置
@@ -310,8 +321,8 @@ let ycm_show_diagnostics_ui = 0
 let g:UltiSnipsExpandTrigger="<leader><tab>" 
 let g:UltiSnipsJumpForwardTrigger="<leader><tab>" 
 let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
-let g:UltiSnipsSnippetDirectories=["mysnippets"] 
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+"let g:UltiSnipsSnippetDirectories=["mysnippets"] 
+"let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 "================================== 
 " YouCompleteMe配置
@@ -334,5 +345,5 @@ let g:ycm_cache_omnifunc=0			" 禁止缓存匹配项，每次都重新生成匹�
 let g:ycm_seed_identifiers_with_syntax=1	" 语法关键字补全 
 
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR> " 跳转到定义处
-
 nnoremap <Leader>s :SemanticHighlightToggle<cr>
+
