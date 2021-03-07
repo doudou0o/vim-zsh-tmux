@@ -126,7 +126,7 @@ CFLAGS="-I$HOME/opt/libevent/include -I$HOME/opt/ncurses/include/ncurses -I$HOME
 LDFLAGS="-L$HOME/opt/libevent/lib -L$HOME/opt/ncurses/lib"  
 ~~~
 
-## 使用
+### 使用
 在.bashrc中增加(若你安装了zsh 统一改为 .zshrc)  
 ~~~
 alias tmux='$HOME/opt/tmux/bin/tmux'
@@ -134,7 +134,11 @@ alias tmux='$HOME/opt/tmux/bin/tmux'
 
 配置在.tmux.conf中
 
-
+### 配置tpm
+~~~
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~~~
+地址: https://github.com/tmux-plugins/tpm
 
 
 ## 设置 zsh
@@ -169,9 +173,32 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 没有root权限时: 在 .bashrc 中曾加 exec $HOME/opt/zsh/bin/zsh -l  
 有root权限时:   chsh -s /usr/local/bin/zsh
 
+### (可配)配置powerlevel10k
+~~~
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+~~~
+
+地址: https://github.com/romkatv/powerlevel10k
+如果是初次使用者可以用`p10k configure`命令来指导安装
+否则用自己的配置文件即可
+
+### (可配)配置colorls
+~~~
+gem install colorls
+~~~
+
+地址: https://github.com/athityakumar/colorls#installation
+配置文件地址
+~~~
+dark_colors.yaml
+~/.config/colorls/dark_colors.yaml
+~~~
 
 ## 设置iterm2
 下载一个[字体](https://github.com/powerline/fonts/blob/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf)
 当使用zsh的`ZSH_THEME="agnoster"`主题时需要
+
+更新字体，我当前字体是
+Monlo + MesloLGS NF
 
 
