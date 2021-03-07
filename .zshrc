@@ -85,6 +85,10 @@ export LANG=en_US.UTF-8
 #export PATH="/Users/cchen/opt/anaconda2/bin:$PATH"
 export PATH="/Users/cchen/opt/anaconda3/bin:$PATH"
 
+# MAVEN
+# export M2_HOME="/Users/shudai/Documents/kb_repository/apache-maven-3.5.3"
+# export PATH="$PATH:$M2_HOME/bin"
+
 # powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
